@@ -7,10 +7,7 @@ log.info("Starting application...")
 import os
 from flask import Flask
 import config
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
-from flask_login import LoginManager
 
 log.debug("Initializing DB.")
 # db = SQLAlchemy()

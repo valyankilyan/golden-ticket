@@ -1,0 +1,227 @@
+main {
+  /*display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: minmax(1px, 1fr)  minmax(10px, 6fr) minmax(10px, 1fr);
+    */
+  font-size: 80px;
+}
+
+body {
+  /* background: url(img/background.png) no-repeat center center fixed;
+  background-size: 100% 100%; */
+  /* background-color: #212529; */
+  font-family: 'Fugue';
+}
+
+@media screen and (max-width: 990px) {
+  main {
+    grid-template-columns: minmax(1px, 1fr) minmax(10px, 50fr) minmax(10px, 1fr);
+  }
+}
+
+@font-face {
+  font-family: 'Fugue';
+  src: url(img/fugue_regular.otf);
+}
+
+/*
+h3 {
+  margin: 0px;
+}
+ 
+.textt {
+  margin: 0px;
+}
+
+.start_text {
+  margin-top: 200px;
+}
+
+.logo_coffesor {
+  width: 500px;
+  height: 500px;
+  margin-top: 100px;
+}
+
+.zao_сoffessor_text {
+  width: 500px;
+  margin: 20px;
+}
+
+.button_black {
+  margin: 5px;
+  background: #000000;
+  padding: 1.5em 6.4em;
+  font-family: 'Fugue';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  color: white;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 15px;
+  border-width: 5px;
+  border-color: black;
+}
+
+.button_black:active {
+  background: rgba(255, 255, 255, 0);
+  color: black;
+}
+
+.button_white {
+  margin: 5px;
+  background: rgba(255, 255, 255, 0);
+  padding: 1.0em 0em;
+  width: 500px;
+  font-family: 'Fugue';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  color: black;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 15px;
+  border-width: 5px;
+  border-color: black;
+}
+
+.button_white:active {
+  background: rgba(0, 0, 0, 1);
+  color: white;
+}
+
+.hreff {
+  text-decoration: none;
+}
+
+.text_white {
+  color: white;
+}
+
+.content_center {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blok_center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.textt_2 {
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+.hreff {
+  text-decoration: none;
+  color: #000000;
+}
+
+.uurl {
+  text-decoration: none;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.text_info {
+  font-size: 40px;
+}
+
+.text_flash {
+  margin-top: 0px;
+  font-size: 30px;
+  color: #e0612e;
+}
+
+.button_section {
+  padding: 50px;
+}
+
+ @media (max-width: 600px) {
+    body{
+        grid-template-columns: minmax(10px, 1fr)  minmax(10px, 60fr) minmax(10px, 1fr);
+    }
+    
+  }
+
+.table_invisible_borders {
+  font-size: 15px;
+  width: 95%;
+  text-align: center;
+  border: none;
+  background: #545a6800;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table_dark {
+  font-size: 15px;
+  width: 95%;
+  text-align: center;
+  border-collapse: collapse;
+  background: #545a6800;
+  margin: 10px;
+}
+
+.table_dark th {
+  color: #000000;
+  border-bottom: 1px solid #000000;
+  padding: 12px 17px;
+}
+
+.table_dark td {
+  color: #000000;
+  border-bottom: 1px solid #000000;
+  border-right: 1px solid #000000;
+  padding: 7px 17px;
+}
+
+.table_dark tr:last-child td {
+  border-bottom: none;
+}
+
+.table_dark td:last-child {
+  border-right: none;
+}
+
+.table_dark tr:hover td {
+  text-decoration: underline;
+}
+
+.hreff3 {
+  text-decoration: none;
+  text-decoration: underline;
+  color: #932f9c;
+}
+
+.href_dark {
+  text-decoration: none;
+  color: #000000;
+}
+
+.field_error_text{
+  color: red;
+  font-size: 15px;
+}
+
+.form_block {
+  width: 150px; Ширина 
+  margin: 0 10px 10px 0; Отступы 
+  padding: 10px 0; Поля сверху и снизу 
+  text-align: center; Выравнивание по центру 
+  display: inline-block; Строчно-блочный элемент 
+ }
+
+ .upperright
+{
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 200px;
+  text-align:right;
+} */
