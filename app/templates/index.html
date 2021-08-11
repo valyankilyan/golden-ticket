@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+
 <div class="main-content blok_center content_center">
     <h1>Скоро здесь появится:</h1>
     <ol>
@@ -10,17 +13,22 @@
     </ol>
 </div>
 
-<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+<div id="container">
+    <h1>QR Code Scanner</h1>
 
-<div class="main-content blok_center content_center">
-    <p class="textt">Счить QR</p>
-        <div id="container">           
-            <a id="btn-scan-qr">
-                <button class="hreff button_black" type="button">QR-КОД</button>
-            </a>
-        </div>
+    <a id="btn-scan-qr">
+        <img src="https://uploads.sitepoint.com/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+    </a>
+
+    <canvas hidden="" id="qr-canvas"></canvas>
+
+    <div id="qr-result" hidden="">
+        <b>Data:</b> <span id="outputData"></span>
+    </div>
 </div>
 
-<script src="{{ url_for('static', filename='js/qrCodeScanner.js') }}"></script>
+<script src="{{ url_for('static', filename='js/qrCodeReader.js') }}"></script>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
 
 {% endblock %}
