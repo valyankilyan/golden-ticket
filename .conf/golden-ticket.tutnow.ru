@@ -22,12 +22,12 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
     # запись доступа и журналы ошибок в /var/log
-    access_log /var/log/nginx_admin_brandshoot.access;
-    error_log /var/log/nginx_admin_brandshoot.error;
+    access_log /var/log/golden-ticket.access;
+    error_log /var/log/golden-ticket.error;
 
     location / {
         # переадресация запросов приложений на сервер gunicorn
-        proxy_pass http://localhost:8000;
+        proxy_pass http://localhost:10000;
         proxy_redirect off;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
