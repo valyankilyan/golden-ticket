@@ -19,11 +19,6 @@ def index():
 def aboutUs():
     return render_template('about-us.html', title='О нас')
 
-@app.route('/data', methods=['POST'])
-def data():
-    if request.method == 'POST':
-        data = request.form['data']
-        log.info(data)
 
 @app.errorhandler(400)
 def bad_request_error(error):

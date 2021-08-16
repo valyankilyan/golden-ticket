@@ -12,13 +12,13 @@ let scanning = false;
 
 QRcode.callback = (res) => {
     if (res) {
-        outputData.innerText = res;
+        outputData.innerText = getTicketInfo(res);
         scanning = false;
 
         video.srcObject.getTracks().forEach(track => {
             track.stop();
         });
-
+           
         qrResult.hidden = false;
         btnScanQR.hidden = false;
         canvasElement.hidden = true;
@@ -29,13 +29,36 @@ QRcode.callback = (res) => {
         req.onreadystatechange = function () { // Call a function when the state changes.
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                 req.send(res);
-                console.log(res)
+                console.log(res);
             }
         }   
         req.send(res);     
-        console.log(res)
+        console.log(res);
     }
 };
+
+function getTicketInfo(res) {
+    res = res.split('&')[2].split('=')[1];
+    digits = [];
+    for (i = 0, len = res.length; i < len; i+= 1) {
+        digits.push(res.charAt(i) - '0')
+    }
+
+    sum = [];
+    for (i = 0, len = digits.length; i < len; i += 5) {
+        s = 0;
+        for (j = i; j < i + 5; j+= 1) {
+            s+= digits[j];
+        }
+        sum.push(s);
+    }
+
+    symbol = sum[0] == sum[1] ? " = " : " != ";
+    status = sum[0] == sum[1] ? "У вас счастливый билет!!!" : "К сожалению в этот раз вам не повезло((";
+
+    return res + "\n" + sum[0] + symbol + sum[1] + "\n" + status;
+}
+
 
 btnScanQR.onclick = () => {
     navigator.mediaDevices
