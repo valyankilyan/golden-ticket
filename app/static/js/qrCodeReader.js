@@ -45,9 +45,9 @@ function getTicketInfo(res) {
     }
 
     sum = [];
-    for (i = 0, len = digits.length; i < len; i += 5) {
+    for (i = 0, len = digits.length; i < len; i += digits.length / 2) {
         s = 0;
-        for (j = i; j < i + 5; j+= 1) {
+        for (j = i; j < i + digits.length / 2; j+= 1) {
             s+= digits[j];
         }
         sum.push(s);
