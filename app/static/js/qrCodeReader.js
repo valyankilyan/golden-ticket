@@ -45,12 +45,19 @@ function getTicketInfo(res) {
     }
 
     sum = [];
-    for (i = 0, len = digits.length; i < len; i += digits.length / 2) {
-        s = 0;
-        for (j = i; j < i + digits.length / 2; j+= 1) {
-            s+= digits[j];
+    if (digits.length % 2 == 0) {        
+        for (i = 0, len = digits.length; i < len; i += digits.length / 2) {
+            s = 0;
+            for (j = i; j < i + digits.length / 2; j+= 1) {
+                s+= digits[j];
+            }
+            sum.push(s);
         }
-        sum.push(s);
+    } else {
+        sum = [0, 0];
+        for (i = 0; i < digits.length; i+= 1) 
+            sum[i%2]+= digits[i];
+        
     }
 
     symbol = sum[0] == sum[1] ? " = " : " != ";
