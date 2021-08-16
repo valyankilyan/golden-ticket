@@ -2,33 +2,32 @@
 
 {% block content %}
 
-<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
-
-<div class="main-content blok_center content_center">
-    <h1>Скоро здесь появится:</h1>
-    <ol>
-        <li>Новости из мира IT и технологий</li>
-        <li>Камера</li>
-        <li>Игра Судоку.</li>
-    </ol>
-</div>
-
-<div id="container">
-    <h1>Отсканируйте свой билетик</h1>
-
-    <a id="btn-scan-qr">
-        <img src="https://uploads.sitepoint.com/wp-content/uploads/2017/07/1499401426qr_icon.svg">
-    </a>
-
-    <canvas hidden="" id="qr-canvas"></canvas>
-
-    <div id="qr-result" hidden="">
-        <span id="outputData"></span>
+<div class="container">
+    <div class="row">
+        <h1>Golden Ticket</h1>
     </div>
+    <div class="row">
+        <p class="bd-lead">
+            Это незаменимый сайт, который поможет вам в самую трудную минуту, 
+            когда вы уже не в силах искать номер билета на этом куске бездушного чека, 
+            когда вы находитесь в отчаянии и вашей последней надеждой является счастливый 
+            билет, билет, который даст вам гарант, что всё в скором времени наладится.
+        </p>
+    </div>
+    <div class="row">
+        <p class="bd-lead">
+            Это веб-приложение поможет вам быстро узнать, как в этот раз обернулся
+            хаос вселенской случайности, всё что вам нужно сделать - это отсканировать
+            QR-код на билете, который вам выдал кондуктор
+        </p>
+    </div>
+    <div class="row">
+        <a href = "/ticket" type="button" class="btn btn-secondary btn-lg">
+            Увидеть будущее
+        </a>
+
+    </div>
+
 </div>
-
-<script src="{{ url_for('static', filename='js/qrCodeReader.js') }}"></script>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-
 
 {% endblock %}

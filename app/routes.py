@@ -5,19 +5,22 @@ from flask import render_template, redirect, flash, request
 from app import app, csrf
 
 
-@app.route('/', methods=['GET', 'POST'])
-@csrf.exempt
+@app.route('/')
 def index():
-    log.info('index')
+    return render_template('index.html', title='Главная')
+
+@app.route('/ticket', methods=['GET', 'POST'])
+@csrf.exempt
+def ticket():
     if request.method == 'POST':
         log.info(request.form)
         nt = request.form['nt']
         log.info(f'ticket-number = {nt}')
-    return render_template('index.html', title='Главная', csrf=csrf)
+    return render_template('ticket.html', title='Билет', csrf=csrf)
 
-@app.route('/about_us')
-def aboutUs():
-    return render_template('about-us.html', title='О нас')
+@app.route('/about')
+def about():
+    return render_template('about.html', title='О проекте')
 
 
 @app.errorhandler(400)

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
+
+<div id="container">
+    <h1>Отсканируйте свой билетик</h1>
+
+    <a id="btn-scan-qr">
+        <img src="https://uploads.sitepoint.com/wp-content/uploads/2017/07/1499401426qr_icon.svg">
+    </a>
+
+    <canvas hidden="" id="qr-canvas"></canvas>
+
+    <div id="qr-result" hidden="">
+        <span id="outputData"></span>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/qrCodeReader.js') }}"></script>
+
+{% endblock %}
