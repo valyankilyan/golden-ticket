@@ -45,6 +45,11 @@ h1 {
   max-width: 700px;  
 }
 
+#footer {
+  position: fixed;
+  width: 95%;
+  bottom: 0;
+}
 
 main {
   /*display: grid;
