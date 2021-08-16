@@ -9,8 +9,7 @@ from flask import Flask
 import config
 from flask_wtf.csrf import CSRFProtect
 
-log.debug("Initializing DB.")
-# db = SQLAlchemy()
+csrf = CSRFProtect()
 
 def create_app():
     log.debug("Initializing Flask.")
@@ -18,7 +17,7 @@ def create_app():
     log.debug("Configurating Flask.")
     app.config.from_object(config.FlaskConfig)
     log.debug("Initializing CSRFProtection.")
-    csrf = CSRFProtect(app)
+    csrf.init_app(app)
     return app
 
 app = create_app()

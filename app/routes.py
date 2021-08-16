@@ -1,14 +1,29 @@
-from flask import render_template, redirect, flash, request
-from app import app 
+from loggerconfig import getLogger
+log = getLogger(__name__)
 
-@app.route('/')
+from flask import render_template, redirect, flash, request
+from app import app, csrf
+
+
+@app.route('/', methods=['GET', 'POST'])
+@csrf.exempt
 def index():
-    return render_template('index.html', title='Главная')
+    log.info('index')
+    if request.method == 'POST':
+        log.info(request.form)
+        nt = request.form['nt']
+        log.info(f'ticket-number = {nt}')
+    return render_template('index.html', title='Главная', csrf=csrf)
 
 @app.route('/about_us')
 def aboutUs():
     return render_template('about-us.html', title='О нас')
 
+@app.route('/data', methods=['POST'])
+def data():
+    if request.method == 'POST':
+        data = request.form['data']
+        log.info(data)
 
 @app.errorhandler(400)
 def bad_request_error(error):

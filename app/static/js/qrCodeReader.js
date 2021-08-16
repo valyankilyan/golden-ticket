@@ -22,6 +22,18 @@ QRcode.callback = (res) => {
         qrResult.hidden = false;
         btnScanQR.hidden = false;
         canvasElement.hidden = true;
+
+        var req = new XMLHttpRequest();
+        req.open('POST', '/', true);
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        req.onreadystatechange = function () { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                req.send(res);
+                console.log(res)
+            }
+        }   
+        req.send(res);     
+        console.log(res)
     }
 };
 
@@ -42,7 +54,6 @@ btnScanQR.onclick = () => {
 };
 
 function tick() {
-    console.log("tick")
     canvasElement.height = video.videoHeight;
     canvasElement.width = video.videoWidth;
     canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
@@ -52,7 +63,6 @@ function tick() {
 
 
 function scan() {
-    console.log("scan")
     try {
         QRcode.decode();
     } catch (e) {
