@@ -96,6 +96,6 @@ function scan() {
     try {
         QRcode.decode();
     } catch (e) {
-        setTimeout(scan, 100);
+        setTimeout(scan, 20);
     }
 }
