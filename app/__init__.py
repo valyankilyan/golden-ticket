@@ -4,7 +4,6 @@ log = loggerconfig.getLogger(__name__)
 
 log.info("Starting application...")
 
-import os
 from flask import Flask
 import config
 from flask_wtf.csrf import CSRFProtect
