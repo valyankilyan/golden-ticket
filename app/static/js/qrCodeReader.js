@@ -59,14 +59,14 @@ function getTicketLuckiness (url, divisor) {
   if (luckiness > 99) {
     msg =
       'ЭТО УЛЬТРАСЧАСТЛИВЫЙ БИЛЕТ, ТЕБЕ ОЧЕНЬ ПОВЕЗЛО, У ТЕБЯ СКОРО ПОЯВИТСЯ ЖЕНА НЕ ИЗ АНИМЕ И ТЫ БУДЕШЬ ЖИТЬ СВОЮ САМУЮ ЛУЧШУЮ ЖИЗНЬ БЛАГОДАРЯ ЭТОМУ БИЛЕТУ!!!'
-  } else if (luckiness > 90) {
+  } else if (luckiness > 97) {
     msg =
       'Ещё чуть-чуть и суперсчастливый был бы,,, Скорее всего у тебя получится сегодня найти деньги на дороге или тебе подарят кофе'
-  } else if (luckiness > 75) {
+  } else if (luckiness > 92) {
     msg = 'Нууу хороший билет, возможно тебе сегодня улыбнется кассир пятерочки'
-  } else if (luckiness > 50) {
+  } else if (luckiness > 86) {
     msg = 'Норм.. Но стоит попробовать ещё раз проехать на троллейбусе'
-  } else if (luckiness > 25) {
+  } else if (luckiness > 70) {
     msg = 'Ну такоеее... В следующий твой кофе плюнет бариста'
   } else if (luckiness > 10) {
     msg = 'оуууу... Не ходи рядом с домами, на тебя может что-то упасть'
@@ -74,7 +74,66 @@ function getTicketLuckiness (url, divisor) {
     msg = 'жеееееесть... Готовься прощаться с жизнью'
   }
 
-  return 'Билет счастливый на ' + luckiness.toFixed(1) + '%. ' + msg
+  const luckinessColor = getColorForLuckiness(luckiness);
+
+  const luckinessOutput = `${luckiness.toFixed(1)}%`;
+
+  return 'Cчастливость билета ' + luckinessOutput + ". " + msg
+}
+
+function getColorForLuckiness (luckiness) {
+  const colorStops = [
+    { luckinessThreshold: 0, color: 'red' },
+    { luckinessThreshold: 80, color: 'yellow' },
+    { luckinessThreshold: 100, color: 'green' }
+  ]
+
+  for (let i = 0; i < colorStops.length - 1; i++) {
+    const currentStop = colorStops[i]
+    const nextStop = colorStops[i + 1]
+
+    if (
+      luckiness >= currentStop.luckinessThreshold &&
+      luckiness <= nextStop.luckinessThreshold
+    ) {
+      const position =
+        (luckiness - currentStop.luckinessThreshold) /
+        (nextStop.luckinessThreshold - currentStop.luckinessThreshold)
+
+      const color = interpolateColor(
+        currentStop.color,
+        nextStop.color,
+        position
+      )
+
+      return color
+    }
+  }
+
+  return 'red'
+}
+
+function interpolateColor (startColor, endColor, position) {
+  const startRGB = hexToRgb(startColor)
+  const endRGB = hexToRgb(endColor)
+
+  const r = startRGB.r + Math.round((endRGB.r - startRGB.r) * position)
+  const g = startRGB.g + Math.round((endRGB.g - startRGB.g) * position)
+  const b = startRGB.b + Math.round((endRGB.b - startRGB.b) * position)
+
+  return rgbToHex(r, g, b)
+}
+
+function hexToRgb (hex) {
+  const bigint = parseInt(hex.slice(1), 16)
+  const r = (bigint >> 16) & 255
+  const g = (bigint >> 8) & 255
+  const b = bigint & 255
+  return { r, g, b }
+}
+
+function rgbToHex (r, g, b) {
+  return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`
 }
 
 function splitNumberIntoArray (num) {
